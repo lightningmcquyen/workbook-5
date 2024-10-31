@@ -2,23 +2,14 @@ public class SemiTruck extends Vehicle {
     private boolean truckTrailer;
 
     public SemiTruck() {
-        this.maxLoad = maxLoad;
-        this.engineType = engineType;
+        this.truckTrailer = truckTrailer;
     }
 
-    public int getMaxLoad() {
-        return maxLoad;
+    public boolean isTruckTrailer() {
+        return truckTrailer;
     }
 
-    public void setMaxLoad(int maxLoad) {
-        this.maxLoad = maxLoad;
-    }
-
-    public String getEngineType() {
-        return engineType;
-    }
-
-    public void setEngineType(String engineType) {
-        this.engineType = engineType;
+    public void setTruckTrailer(boolean truckTrailer) {
+        this.truckTrailer = truckTrailer;
     }
 }

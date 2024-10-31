@@ -7,7 +7,7 @@ public class SuperTransportation {
         slowRide.setFuelCapacity(2);
         System.out.println("When I'm in the mood for a cruise, I take my " + slowRide.getModel()
                 + " (bright cherry " + slowRide.getColor()
-                + " and only has fuel capacity of " + slowRide.getFuelCapacity()+ " gallons.");
+                + " and only has fuel capacity of " + slowRide.getFuelCapacity()+ " gallons).");
 
 
         Car myCar = new Car();

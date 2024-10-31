@@ -8,15 +8,9 @@ public class HoverCraft extends Vehicle {
         this.floating = floating;
     }
 
-    public boolean isAllTerrain() {
+    public boolean isAllTerrain() {return allTerrain;}
 
-        return allTerrain;
-    }
-
-    public void setAllTerrain(boolean allTerrain) {
-
-        this.allTerrain = allTerrain;
-    }
+    public void setAllTerrain(boolean allTerrain) {this.allTerrain = allTerrain;}
 
     public boolean isFloating(){
         return isFloating();

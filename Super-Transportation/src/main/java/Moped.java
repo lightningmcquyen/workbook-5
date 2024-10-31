@@ -1,38 +1,12 @@
 public class Moped extends Vehicle {
     private boolean cargoCarrier;
 
-    public Moped() {
-        this.model = model;
-        this.color = color;
-        this.maxSpeed = maxSpeed;
+    public boolean isCargoCarrier() {
+        return cargoCarrier;
     }
 
-    public String getModel() {
-
-        return model;
+    public void setCargoCarrier(boolean cargoCarrier) {
+        this.cargoCarrier = cargoCarrier;
     }
 
-    public void setModel(String model) {
-
-        this.model = model;
-    }
-
-    @Override
-    public String getColor() {
-        return color;
-    }
-
-    @Override
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Override
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    public void setMaxSpeed(int maxSpeed) {
-        this.maxSpeed = maxSpeed;
-    }
 }

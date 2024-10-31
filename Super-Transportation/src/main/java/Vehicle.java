@@ -1,28 +1,23 @@
 public class Vehicle {
     private String color;
+    private String make;
     private String model;
     private int maxSpeed;
     private int numberOfPassengers;
     private int cargoCapacity;
     private int fuelCapacity;
 
-    public String model() {
-        return model;
-    }
+    public String getMake() {return make;}
 
-    public void setModel(String model) {
-        this.model = model;
-    }
+    public void setMake(String make) {this.make = make;}
 
-    public String getColor() {
+    public String getModel() {return model;}
 
-        return color;
-    }
+    public void setModel(String model) {this.model = model;}
 
-    public void setColor(String color) {
+    public String getColor() {return color;}
 
-        this.color = color;
-    }
+    public void setColor(String color) {this.color = color;}
 
     public int getMaxSpeed() {
         return maxSpeed;
