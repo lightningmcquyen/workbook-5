@@ -1,15 +1,26 @@
 public class Vehicle {
     private String color;
+    private String model;
     private int maxSpeed;
     private int numberOfPassengers;
     private int cargoCapacity;
     private int fuelCapacity;
 
+    public String model() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
     public String getColor() {
+
         return color;
     }
 
     public void setColor(String color) {
+
         this.color = color;
     }
 

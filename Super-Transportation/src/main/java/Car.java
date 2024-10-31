@@ -1,6 +1,4 @@
 public class Car extends Vehicle {
-    private String make;
-    private String model;
     private String vehicleType;
 
     public Car() {

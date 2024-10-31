@@ -1,6 +1,5 @@
 public class SemiTruck extends Vehicle {
-    private int maxLoad;
-    private String engineType;
+    private boolean truckTrailer;
 
     public SemiTruck() {
         this.maxLoad = maxLoad;

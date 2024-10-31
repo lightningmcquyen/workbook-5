@@ -1,7 +1,5 @@
 public class Moped extends Vehicle {
-    private String model;
-    private String color;
-    private int maxSpeed;
+    private boolean cargoCarrier;
 
     public Moped() {
         this.model = model;
@@ -10,10 +8,12 @@ public class Moped extends Vehicle {
     }
 
     public String getModel() {
+
         return model;
     }
 
     public void setModel(String model) {
+
         this.model = model;
     }
 
