@@ -35,7 +35,7 @@ public class Vehicle extends Asset {
     }
 
     @Override
-    public double getValue(){
+    public double getValue() {
         double value = super.getValue(); // Start with the original cost
 
         // Calculate the vehicle's age
@@ -59,5 +59,17 @@ public class Vehicle extends Asset {
 
         // value can't be negative
         return Math.max(value, 0);
+    }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "description='" + getDescription() + '\'' +
+                ", dataAcquired='" + getDataAcquired() + '\'' +
+                ", originalCost=" + getOriginalCost() +
+                ", makeModel='" + makeModel + '\'' +
+                ", year=" + year +
+                ", odometer=" + odometer +
+                '}';
     }
 }

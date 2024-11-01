@@ -21,6 +21,10 @@ public class AssetManager {
 
 
         for (Asset asset : myAssets) {
+            System.out.println("Description: " + asset.getDescription());
+            System.out.println("Date Acquired: " + asset.getDataAcquired());
+            System.out.println("Original Cost: $" + asset.getOriginalCost());
+            System.out.println("Current Value: $" + asset.getValue());
             System.out.println("..........");
         }
     }

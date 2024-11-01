@@ -36,4 +36,13 @@ public class Asset {
     public double getValue () {
     return originalCost;
     }
+
+    @Override
+    public String toString() {
+        return "Asset{" +
+                "description='" + description + '\'' +
+                ", dataAcquired='" + dataAcquired + '\'' +
+                ", originalCost=" + originalCost +
+                '}';
+    }
 }

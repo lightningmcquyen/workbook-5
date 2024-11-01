@@ -14,7 +14,7 @@ public class House extends Asset {
     }
 
     @Override
-    public double getValue(){
+    public double getValue() {
         double valuePerSquareFoot;
 
         // Determine value per square foot based on condition
@@ -40,5 +40,18 @@ public class House extends Asset {
         double value = (valuePerSquareFoot * squareFoot) + (0.25 * lotSize);
 
         return value;
+    }
+
+    @Override
+    public String toString() {
+        return "House{" +
+                "description='" + getDescription() + '\'' +
+                ", dataAcquired='" + getDataAcquired() + '\'' +
+                ", originalCost=" + getOriginalCost() +
+                ", address='" + address + '\'' +
+                ", condition=" + condition +
+                ", squareFoot=" + squareFoot +
+                ", lotSize=" + lotSize +
+                '}';
     }
 }
