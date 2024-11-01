@@ -1,6 +1,6 @@
 package com.pluralsight.dealership;
 
-public class CarDealership {
+public class AdvancedCarDealership {
 
     public static void main(String[] args) {
 
