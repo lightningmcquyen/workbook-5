@@ -20,12 +20,24 @@ public class AssetManager {
         myAssets.add(quyensVehicle3);
 
 
+        // Loop through the asset collection
         for (Asset asset : myAssets) {
-            System.out.println("Description: " + asset.getDescription());
-            System.out.println("Date Acquired: " + asset.getDataAcquired());
-            System.out.println("Original Cost: $" + asset.getOriginalCost());
-            System.out.println("Current Value: $" + asset.getValue());
-            System.out.println("..........");
+            if (asset instanceof House house) {
+                System.out.println("Description: " + house.getDescription());
+                System.out.println("Date Acquired: " + house.getDataAcquired());
+                System.out.println("Original Cost: $" + house.getOriginalCost());
+                System.out.println("Current Value: $" + house.getValue());
+                System.out.println("Address: " + house.getAddress());
+                System.out.println("..........");
+            } else if (asset instanceof Vehicle vehicle) {
+                System.out.println("Description: " + vehicle.getDescription());
+                System.out.println("Date Acquired: " + vehicle.getDataAcquired());
+                System.out.println("Original Cost: $" + vehicle.getOriginalCost());
+                System.out.println("Current Value: $" + vehicle.getValue());
+                System.out.println("Make/Model: " + vehicle.getMakeModel());
+                System.out.println("Year: " + vehicle.getYear());
+                System.out.println("Odometer: " + vehicle.getOdometer());
+            }
         }
     }
 }

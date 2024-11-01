@@ -1,7 +1,7 @@
 public class Vehicle extends Asset {
-    private String makeModel;
-    private int year;
-    private int odometer;
+    private final String makeModel;
+    private final int year;
+    private final int odometer;
 
     public Vehicle(String description, String dataAcquired, double originalCost, String makeModel, int year, int odometer) {
         super(description, dataAcquired, originalCost);
@@ -14,24 +14,12 @@ public class Vehicle extends Asset {
         return makeModel;
     }
 
-    public void setMakeModel(String makeModel) {
-        this.makeModel = makeModel;
-    }
-
     public int getYear() {
         return year;
     }
 
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     public int getOdometer() {
         return odometer;
-    }
-
-    public void setOdometer(int odometer) {
-        this.odometer = odometer;
     }
 
     @Override
@@ -63,11 +51,8 @@ public class Vehicle extends Asset {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "description='" + getDescription() + '\'' +
-                ", dataAcquired='" + getDataAcquired() + '\'' +
-                ", originalCost=" + getOriginalCost() +
-                ", makeModel='" + makeModel + '\'' +
+        return super.toString() + ", Vehicle{" +
+                "makeModel='" + makeModel + '\'' +
                 ", year=" + year +
                 ", odometer=" + odometer +
                 '}';
