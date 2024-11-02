@@ -50,7 +50,6 @@ public class SalesContract extends Contract {
     }
 
 
-
     // Override getTotalPrice to calculate total
     @Override
     public double getTotalPrice() {

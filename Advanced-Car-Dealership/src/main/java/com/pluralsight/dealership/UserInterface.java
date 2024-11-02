@@ -5,34 +5,34 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Dealership dealership;
-    private boolean isRunning;
-    private final Scanner scanley;
+    private Dealership dealership; // Reference to the dealership
+    private boolean isRunning; // Control variable for the menu loop
+    private final Scanner scanley; // Scanner for user input
 
     public UserInterface() {
-        this.isRunning = true; // Initialize to start the loop
-        this.scanley = new Scanner(System.in);
-        init(); // Initialize the dealership when UserInterface is created
+        this.isRunning = true; // Initialize running state
+        this.scanley = new Scanner(System.in); // Create a scanner instance
+        init(); // Initialize the dealership
     }
 
-    // Method to display vehicles
+    // Method to display vehicles to the user
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
         if (vehicles.isEmpty()) {
             System.out.println("No vehicles found."); // Message if no vehicles are found
         } else {
             for (Vehicle car : vehicles) {
-                System.out.println(car); // Print each vehicle
+                System.out.println(car); // Print each vehicle's details
             }
         }
     }
 
-    // Initialize dealership by loading data from the file
+    // Method to initialize the dealership from file
     private void init() {
         DealershipFileManager manager = new DealershipFileManager();
-        this.dealership = manager.getDealership();
+        this.dealership = manager.getDealership(); // Load dealership data
     }
 
-    // Quit the application and save the dealership data
+    // Method to quit the application
     public void quit() {
         DealershipFileManager manager = new DealershipFileManager();
         manager.saveDealership(dealership); // Save dealership data
@@ -40,10 +40,10 @@ public class UserInterface {
                 D & B Used Cars|111 Old Benbrook Rd|817-555-5555
                 🚗 Thank you for stopping by. Please come again! 🚚
                 """);
-        isRunning = false; // Exit loop
+        isRunning = false; // Set running state to false
     }
 
-    // Display the menu options
+    // Method to display the main menu
     public void displayMenu() {
         System.out.println("""
                 🏁 Welcome to D & B Used Cars 💨
@@ -57,8 +57,8 @@ public class UserInterface {
                 (G) Display All Vehicles
                 (H) Add a Vehicle
                 (I) Remove a Vehicle
-                (J) Sell a Vehicle
-                (K) Lease a Vehicle
+                (J) Record a Sale
+                (K) Record a Lease
                 (X) Quit
                 ================================
                 Enter your choice:
@@ -67,11 +67,11 @@ public class UserInterface {
 
     // Main display loop
     public void display() {
-        while (isRunning) { // Keep the application running
-            displayMenu(); // Show menu options
-            String option = scanley.nextLine().toUpperCase(); // Get user input
+        while (isRunning) {
+            displayMenu(); // Show the menu
+            String option = scanley.nextLine().toUpperCase(); // Get user choice
 
-            // Handle user choices
+            // Handle menu options
             switch (option) {
                 case "A" -> processGetByPriceRequest();
                 case "B" -> processGetByMakeModelRequest();
@@ -82,26 +82,27 @@ public class UserInterface {
                 case "G" -> processGetAllVehiclesRequest();
                 case "H" -> processAddVehicleRequest();
                 case "I" -> processRemoveVehicleRequest();
-                case "J" -> processSellVehicleRequest();
+                case "J" -> processSaleVehicleRequest();
                 case "K" -> processLeaseVehicleRequest();
-                case "X" -> quit(); // Call the quit method
-                default -> System.out.println("Invalid option. Please choose a valid option."); // Error message
+                case "X" -> quit();
+                default -> System.out.println("Invalid option. Please choose a valid option."); // Handle invalid input
             }
         }
     }
 
-    // Process requests based on criteria
+    // Method to process vehicle search by price
     public void processGetByPriceRequest() {
         System.out.print("Enter minimum price: ");
         double minPrice = scanley.nextDouble();
         System.out.print("Enter maximum price: ");
         double maxPrice = scanley.nextDouble();
-        scanley.nextLine(); // Clear the newline
+        scanley.nextLine(); // Clear the scanner buffer
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByPrice(minPrice, maxPrice);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to process vehicle search by make and model
     public void processGetByMakeModelRequest() {
         System.out.print("Enter vehicle make: ");
         String make = scanley.nextLine();
@@ -109,53 +110,58 @@ public class UserInterface {
         String model = scanley.nextLine();
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByMakeModel(make, model);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to process vehicle search by year range
     public void processGetByYearRequest() {
         System.out.print("Enter minimum year: ");
         int minYear = scanley.nextInt();
         System.out.print("Enter maximum year: ");
         int maxYear = scanley.nextInt();
-        scanley.nextLine(); // Clear the newline
+        scanley.nextLine(); // Clear the scanner buffer
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByYear(minYear, maxYear);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to process vehicle search by color
     public void processGetByColorRequest() {
         System.out.print("Enter vehicle color: ");
         String color = scanley.nextLine();
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByColor(color);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to process vehicle search by mileage range
     public void processGetByMileageRequest() {
         System.out.print("Enter minimum mileage: ");
         double minMileage = scanley.nextDouble();
         System.out.print("Enter maximum mileage: ");
         double maxMileage = scanley.nextDouble();
-        scanley.nextLine(); // Clear the newline
+        scanley.nextLine(); // Clear the scanner buffer
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByMileage(minMileage, maxMileage);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to process vehicle search by type
     public void processGetByVehicleTypeRequest() {
         System.out.print("Enter vehicle type: ");
         String vehicleType = scanley.nextLine();
 
         ArrayList<Vehicle> vehicles = dealership.getVehiclesByType(vehicleType);
-        displayVehicles(vehicles); // Show the results
+        displayVehicles(vehicles); // Display matching vehicles
     }
 
+    // Method to display all vehicles in inventory
     public void processGetAllVehiclesRequest() {
         displayVehicles(dealership.getAllVehicles()); // Display all vehicles
     }
 
+    // Method to add a new vehicle
     public void processAddVehicleRequest() {
-        // Get vehicle details from the user
         System.out.println("Enter VIN:");
         int vin = Integer.parseInt(scanley.nextLine());
         System.out.println("Enter Year:");
@@ -173,27 +179,25 @@ public class UserInterface {
         System.out.println("Enter Price:");
         double price = Double.parseDouble(scanley.nextLine());
 
-        // Create a new Vehicle object and add it to the dealership
         Vehicle newVehicle = new Vehicle(vin, year, make, model, vehicleType, color, odometer, price);
-        dealership.addVehicle(newVehicle);
+        dealership.addVehicle(newVehicle); // Add vehicle to dealership
         System.out.println("Vehicle added successfully!");
     }
 
+    // Method to remove a vehicle by VIN
     public void processRemoveVehicleRequest() {
         System.out.println("Enter the VIN of the vehicle to remove:");
         int vin = Integer.parseInt(scanley.nextLine());
 
         if (dealership.removeVehicle(vin)) {
-            System.out.println("Vehicle removed successfully!");
+            System.out.println("Vehicle removed successfully!"); // Success message
         } else {
-            System.out.println("Vehicle with VIN " + vin + " not found.");
+            System.out.println("Vehicle with VIN " + vin + " not found."); // Error message
         }
     }
 
-
-
-    public void processSellVehicleRequest() {
-        // Get vehicle details from the user
+    // Method to record a vehicle sale
+    public void processSaleVehicleRequest() {
         System.out.print("Enter date of contract (e.g., YYYY-MM-DD): ");
         String dateOfContract = scanley.nextLine();
 
@@ -203,80 +207,71 @@ public class UserInterface {
         System.out.print("Enter customer email: ");
         String customerEmail = scanley.nextLine();
 
-        // Get the VIN of the vehicle sold
         System.out.print("Enter VIN of the vehicle sold: ");
         int vin = Integer.parseInt(scanley.nextLine());
 
-        // Find the vehicle in the inventory
         Vehicle vehicleSold = null;
+        // Find the sold vehicle by VIN
         for (Vehicle vehicle : dealership.getAllVehicles()) {
             if (vehicle.getVin() == vin) {
                 vehicleSold = vehicle;
-                break; // Exit the loop if the vehicle is found
+                break;
             }
         }
 
-        // Check if the vehicle was found
         if (vehicleSold == null) {
-            System.out.println("Vehicle not found.");
+            System.out.println("Vehicle not found."); // Error message if vehicle not found
             return;
         }
 
-        System.out.print("Enter sale price: ");
-        double salePrice = Double.parseDouble(scanley.nextLine());
+        System.out.print("Enter original price: ");
+        double originalPrice = Double.parseDouble(scanley.nextLine());
 
-        System.out.print("Do you want to finance the vehicle? (yes/no): ");
+        System.out.print("Do you want to finance? (yes/no): ");
         String financeInput = scanley.nextLine();
         boolean finance = financeInput.equalsIgnoreCase("yes");
 
-        // Create a new SalesContract object
-        SalesContract salesContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, salePrice, finance);
-        System.out.println("Sales contract created successfully!");
+        SalesContract salesContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, originalPrice, finance);
+        System.out.println("Sale contract created successfully!"); // Success message
     }
 
-
-
+    // Method to record a vehicle lease
     public void processLeaseVehicleRequest() {
-        System.out.println("Enter the VIN of the vehicle to lease:");
-        int vin = Integer.parseInt(scanley.nextLine()); // Read and convert input to an int
+        System.out.print("Enter date of contract (e.g., YYYY-MM-DD): ");
+        String dateOfContract = scanley.nextLine();
 
-        // Find the vehicle by VIN
-        Vehicle vehicle = null; // Start with no vehicle found
-        for (Vehicle v : dealership.getAllVehicles()) { // Loop through all vehicles
-            if (v.getVin() == vin) { // Check if this is the right vehicle
-                vehicle = v; // If found, assign it to vehicle
-                break; // Exit the loop since we found the vehicle
+        System.out.print("Enter customer name: ");
+        String customerName = scanley.nextLine();
+
+        System.out.print("Enter customer email: ");
+        String customerEmail = scanley.nextLine();
+
+        System.out.print("Enter VIN of the vehicle leased: ");
+        int vin = Integer.parseInt(scanley.nextLine());
+
+        Vehicle vehicleLeased = null;
+        // Find the leased vehicle by VIN
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) {
+                vehicleLeased = vehicle;
+                break;
             }
         }
 
-        // Check if vehicle was found
-        if (vehicle == null) {
-            System.out.println("Vehicle with VIN " + vin + " not found."); // Inform the user
-            return; // Exit the method if no vehicle was found
-        }
-        if (2024 - vehicle.getYear() > 3) { // If vehicle is over 3 years old
-            System.out.println("This vehicle cannot be leased as it is over 3 years old.");
-            return; // Exit if it cannot be leased
+        if (vehicleLeased == null) {
+            System.out.println("Vehicle not found."); // Error message if vehicle not found
+            return;
         }
 
-        // Get lessee details
-        System.out.print("Enter lessee's name: ");
-        String lesseeName = scanley.nextLine();
+        System.out.print("Enter original price: ");
+        double originalPrice = Double.parseDouble(scanley.nextLine());
 
-        System.out.print("Enter lessee's email: ");
-        String lesseeEmail = scanley.nextLine();
+        System.out.print("Do you want to finance? (yes/no): ");
+        String financeInput = scanley.nextLine();
+        boolean finance = financeInput.equalsIgnoreCase("yes");
 
-        // Get lease details
-        System.out.print("Enter lease price: ");
-        double leasePrice = Double.parseDouble(scanley.nextLine()); // convert lease price to double
-
-        System.out.print("Enter lease term (in months): ");
-        int leaseTerm = Integer.parseInt(scanley.nextLine()); // convert lease term to integer
-
-        // Create LeaseContract with the collected information
-        String dateOfContract = java.time.LocalDate.now().toString(); // Get current date
-        LeaseContract leaseContract = new LeaseContract(dateOfContract, lesseeName, lesseeEmail, vehicle, leasePrice, leaseTerm);
-
-        System.out.println("Lease recorded: " + leaseContract); // Print confirmation
+        // Ensure correct parameters are passed to the LeaseContract constructor
+        LeaseContract leaseContract = new LeaseContract(dateOfContract, customerName, customerEmail, vehicleLeased, originalPrice, finance);
+        System.out.println("Lease contract created successfully!"); // Success message
     }
 }
