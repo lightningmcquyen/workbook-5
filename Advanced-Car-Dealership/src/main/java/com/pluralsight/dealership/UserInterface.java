@@ -57,6 +57,8 @@ public class UserInterface {
                 (G) Display All Vehicles
                 (H) Add a Vehicle
                 (I) Remove a Vehicle
+                (J) Sell a Vehicle
+                (K) Lease a Vehicle
                 (X) Quit
                 ================================
                 Enter your choice:
@@ -80,6 +82,8 @@ public class UserInterface {
                 case "G" -> processGetAllVehiclesRequest();
                 case "H" -> processAddVehicleRequest();
                 case "I" -> processRemoveVehicleRequest();
+                case "J" -> processSellVehicleRequest();
+                case "K" -> processLeaseVehicleRequest();
                 case "X" -> quit(); // Call the quit method
                 default -> System.out.println("Invalid option. Please choose a valid option."); // Error message
             }
@@ -185,4 +189,25 @@ public class UserInterface {
             System.out.println("Vehicle with VIN " + vin + " not found.");
         }
     }
+
+    public void processSellVehicleRequest() {
+        // will add more later
+        System.out.println("Enter the VIN of the vehicle to sell:");
+        int vin = Integer.parseInt(scanley.nextLine());
+
+        if (dealership.removeVehicle(vin)) {
+            System.out.println("Vehicle sold!");
+        } else {
+            System.out.println("Vehicle with VIN " + vin + " not found.");
+        }
+    }
+
+    public void processLeaseVehicleRequest() {
+        // will add more later
+        System.out.println("Enter the VIN number of the vehicle you wish to lease:");
+        int vin = Integer.parseInt(scanley.nextLine());
+
+        System.out.println("Leasing process initiated for vehicle with VIN: " + vin);
+    }
+
 }
