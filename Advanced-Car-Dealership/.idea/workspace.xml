@@ -8,26 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdacceaa-4210-4955-961d-1050b5e7fa69" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/java/com/pluralsight/dealership/AdvancedCarDealership.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/java/com/pluralsight/dealership/Dealership.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/java/com/pluralsight/dealership/DealershipFileManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/java/com/pluralsight/dealership/UserInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/java/com/pluralsight/dealership/Vehicle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles - Copy/JavaHelpers/ColorCodes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles - Copy/JavaHelpers/Symbols.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles - Copy/inventory2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles/JavaHelpers/ColorCodes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles/JavaHelpers/Symbols.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/main/resources/WorkshopFiles/inventory.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Car-Dealership-2.0/src/test/java/UserInterfaceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/Contract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/Contract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/LeaseContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/LeaseContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/SalesContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pluralsight/dealership/SalesContract.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
