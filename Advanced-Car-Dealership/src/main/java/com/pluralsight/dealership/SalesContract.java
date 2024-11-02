@@ -1,40 +1,24 @@
 package com.pluralsight.dealership;
 
-public class SalesContract {
-    private int vin;
-    private String buyerName;
+public class SalesContract extends Contract {
     private double salePrice;
 
-    public SalesContract(int vin, String buyerName, double salePrice) {
-        this.vin = vin;
-        this.buyerName = buyerName;
+    public SalesContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicleSold, double salePrice) {
+        super(dateOfContract, customerName, customerEmail, vehicleSold);
         this.salePrice = salePrice;
-    }
-
-    public int getVin() {
-        return vin;
-    }
-
-    public void setVin(int vin) {
-        this.vin = vin;
-    }
-
-    public String getBuyerName() {
-        return buyerName;
-    }
-
-    public void setBuyerName(String buyerName) {
-        this.buyerName = buyerName;
     }
 
     public double getSalePrice() {
         return salePrice;
     }
 
-    public void setSalePrice(double salePrice) {
-        this.salePrice = salePrice;
+    @Override
+    public double getTotalPrice() {
+        return salePrice; // For a sale, the total price is the sale price
     }
 
-    // toString() method for display
+    @Override
+    public double getMonthlyPayment() {
+        return 0; // No monthly payment for a sale
+    }
 }
-

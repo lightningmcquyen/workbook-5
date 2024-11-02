@@ -190,24 +190,90 @@ public class UserInterface {
         }
     }
 
-    public void processSellVehicleRequest() {
-        // will add more later
-        System.out.println("Enter the VIN of the vehicle to sell:");
-        int vin = Integer.parseInt(scanley.nextLine());
 
-        if (dealership.removeVehicle(vin)) {
-            System.out.println("Vehicle sold!");
-        } else {
-            System.out.println("Vehicle with VIN " + vin + " not found.");
+
+    public void processSellVehicleRequest() {
+        // Ask for the vehicle VIN
+        System.out.println("Enter the VIN of the vehicle to sell:");
+        int vin = Integer.parseInt(scanley.nextLine()); // convert input to an integer
+
+        // Find the vehicle by VIN
+        Vehicle vehicle = null; // Start with no vehicle found
+        for (Vehicle v : dealership.getAllVehicles()) { // Loop through all vehicles
+            if (v.getVin() == vin) { // Check if this is the right vehicle
+                vehicle = v; // If found, assign it to vehicle
+                break; // Exit the loop since we found the vehicle
+            }
         }
+        // Check if vehicle was found
+        if (vehicle == null) {
+            System.out.println("Vehicle with VIN " + vin + " not found.");
+            return; // Exit the method if no vehicle was found
+        }
+
+        // Get buyer details
+        System.out.print("Enter buyer's name: ");
+        String buyerName = scanley.nextLine(); // Read buyer's name
+
+        System.out.print("Enter buyer's email: ");
+        String buyerEmail = scanley.nextLine(); // Read buyer's email
+
+        // Get sale price
+        System.out.print("Enter sale price: ");
+        double salePrice = Double.parseDouble(scanley.nextLine()); //convert price to double
+
+        // Create SalesContract with the collected information
+        String dateOfContract = java.time.LocalDate.now().toString(); // Get current date
+        SalesContract salesContract = new SalesContract(dateOfContract, buyerName, buyerEmail, vehicle, salePrice);
+
+        // Remove the vehicle from the dealership
+        dealership.removeVehicle(vin);
+        System.out.println("Sale recorded: " + salesContract); // Print confirmation
     }
+
+
 
     public void processLeaseVehicleRequest() {
-        // will add more later
-        System.out.println("Enter the VIN number of the vehicle you wish to lease:");
-        int vin = Integer.parseInt(scanley.nextLine());
+        System.out.println("Enter the VIN of the vehicle to lease:");
+        int vin = Integer.parseInt(scanley.nextLine()); // Read and convert input to an int
 
-        System.out.println("Leasing process initiated for vehicle with VIN: " + vin);
+        // Find the vehicle by VIN
+        Vehicle vehicle = null; // Start with no vehicle found
+        for (Vehicle v : dealership.getAllVehicles()) { // Loop through all vehicles
+            if (v.getVin() == vin) { // Check if this is the right vehicle
+                vehicle = v; // If found, assign it to vehicle
+                break; // Exit the loop since we found the vehicle
+            }
+        }
+
+        // Check if vehicle was found
+        if (vehicle == null) {
+            System.out.println("Vehicle with VIN " + vin + " not found."); // Inform the user
+            return; // Exit the method if no vehicle was found
+        }
+        if (2024 - vehicle.getYear() > 3) { // If vehicle is over 3 years old
+            System.out.println("This vehicle cannot be leased as it is over 3 years old.");
+            return; // Exit if it cannot be leased
+        }
+
+        // Get lessee details
+        System.out.print("Enter lessee's name: ");
+        String lesseeName = scanley.nextLine();
+
+        System.out.print("Enter lessee's email: ");
+        String lesseeEmail = scanley.nextLine();
+
+        // Get lease details
+        System.out.print("Enter lease price: ");
+        double leasePrice = Double.parseDouble(scanley.nextLine()); // convert lease price to double
+
+        System.out.print("Enter lease term (in months): ");
+        int leaseTerm = Integer.parseInt(scanley.nextLine()); // convert lease term to integer
+
+        // Create LeaseContract with the collected information
+        String dateOfContract = java.time.LocalDate.now().toString(); // Get current date
+        LeaseContract leaseContract = new LeaseContract(dateOfContract, lesseeName, lesseeEmail, vehicle, leasePrice, leaseTerm);
+
+        System.out.println("Lease recorded: " + leaseContract); // Print confirmation
     }
-
 }
