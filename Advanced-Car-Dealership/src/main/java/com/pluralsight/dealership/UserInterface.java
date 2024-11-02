@@ -193,42 +193,45 @@ public class UserInterface {
 
 
     public void processSellVehicleRequest() {
-        // Ask for the vehicle VIN
-        System.out.println("Enter the VIN of the vehicle to sell:");
-        int vin = Integer.parseInt(scanley.nextLine()); // convert input to an integer
+        // Get vehicle details from the user
+        System.out.print("Enter date of contract (e.g., YYYY-MM-DD): ");
+        String dateOfContract = scanley.nextLine();
 
-        // Find the vehicle by VIN
-        Vehicle vehicle = null; // Start with no vehicle found
-        for (Vehicle v : dealership.getAllVehicles()) { // Loop through all vehicles
-            if (v.getVin() == vin) { // Check if this is the right vehicle
-                vehicle = v; // If found, assign it to vehicle
-                break; // Exit the loop since we found the vehicle
+        System.out.print("Enter customer name: ");
+        String customerName = scanley.nextLine();
+
+        System.out.print("Enter customer email: ");
+        String customerEmail = scanley.nextLine();
+
+        // Get the VIN of the vehicle sold
+        System.out.print("Enter VIN of the vehicle sold: ");
+        int vin = Integer.parseInt(scanley.nextLine());
+
+        // Find the vehicle in the inventory
+        Vehicle vehicleSold = null;
+        for (Vehicle vehicle : dealership.getAllVehicles()) {
+            if (vehicle.getVin() == vin) {
+                vehicleSold = vehicle;
+                break; // Exit the loop if the vehicle is found
             }
         }
-        // Check if vehicle was found
-        if (vehicle == null) {
-            System.out.println("Vehicle with VIN " + vin + " not found.");
-            return; // Exit the method if no vehicle was found
+
+        // Check if the vehicle was found
+        if (vehicleSold == null) {
+            System.out.println("Vehicle not found.");
+            return;
         }
 
-        // Get buyer details
-        System.out.print("Enter buyer's name: ");
-        String buyerName = scanley.nextLine(); // Read buyer's name
-
-        System.out.print("Enter buyer's email: ");
-        String buyerEmail = scanley.nextLine(); // Read buyer's email
-
-        // Get sale price
         System.out.print("Enter sale price: ");
-        double salePrice = Double.parseDouble(scanley.nextLine()); //convert price to double
+        double salePrice = Double.parseDouble(scanley.nextLine());
 
-        // Create SalesContract with the collected information
-        String dateOfContract = java.time.LocalDate.now().toString(); // Get current date
-        SalesContract salesContract = new SalesContract(dateOfContract, buyerName, buyerEmail, vehicle, salePrice);
+        System.out.print("Do you want to finance the vehicle? (yes/no): ");
+        String financeInput = scanley.nextLine();
+        boolean finance = financeInput.equalsIgnoreCase("yes");
 
-        // Remove the vehicle from the dealership
-        dealership.removeVehicle(vin);
-        System.out.println("Sale recorded: " + salesContract); // Print confirmation
+        // Create a new SalesContract object
+        SalesContract salesContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, salePrice, finance);
+        System.out.println("Sales contract created successfully!");
     }
 
 

@@ -10,6 +10,7 @@ public class LeaseContract extends Contract {
         this.leaseTerm = leaseTerm;
     }
 
+    // Getters and Setters
     public double getLeasePrice() {
         return leasePrice;
     }
