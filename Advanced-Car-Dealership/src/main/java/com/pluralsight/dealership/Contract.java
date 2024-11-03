@@ -1,7 +1,7 @@
 package com.pluralsight.dealership;
 
 public abstract class Contract {
-    private String dateOfContract; // Date of contract as a String
+    private String dateOfContract;
     private String customerName;
     private String customerEmail;
     private Vehicle vehicleSold; // Reference to the sold vehicle
@@ -54,4 +54,3 @@ public abstract class Contract {
     public abstract double getMonthlyPayment();
     // Abstract method for monthly payment
 }
-

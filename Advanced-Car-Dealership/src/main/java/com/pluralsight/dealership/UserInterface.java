@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class UserInterface {
 
-    private Dealership dealership; // Reference to the dealership
+    private Dealership dealership;
     private boolean isRunning; // Control variable for the menu loop
-    private final Scanner scanley; // Scanner for user input
+    private final Scanner scanley;
 
     public UserInterface() {
         this.isRunning = true; // Initialize running state
@@ -15,10 +15,10 @@ public class UserInterface {
         init(); // Initialize the dealership
     }
 
-    // Method to display vehicles to the user
+    // Display method
     private void displayVehicles(ArrayList<Vehicle> vehicles) {
         if (vehicles.isEmpty()) {
-            System.out.println("No vehicles found."); // Message if no vehicles are found
+            System.out.println("No vehicles found..."); // Message if no vehicles are found
         } else {
             for (Vehicle car : vehicles) {
                 System.out.println(car); // Print each vehicle's details
@@ -37,7 +37,7 @@ public class UserInterface {
         DealershipFileManager manager = new DealershipFileManager();
         manager.saveDealership(dealership); // Save dealership data
         System.out.println("""
-                D & B Used Cars|111 Old Benbrook Rd|817-555-5555
+                 D & B Used Cars|111 Old Benbrook Rd|817-555-5555
                 🚗 Thank you for stopping by. Please come again! 🚚
                 """);
         isRunning = false; // Set running state to false
@@ -68,8 +68,8 @@ public class UserInterface {
     // Main display loop
     public void display() {
         while (isRunning) {
-            displayMenu(); // Show the menu
-            String option = scanley.nextLine().toUpperCase(); // Get user choice
+            displayMenu(); // Show the menu and get choice
+            String option = scanley.nextLine().toUpperCase();
 
             // Handle menu options
             switch (option) {
@@ -192,13 +192,13 @@ public class UserInterface {
         if (dealership.removeVehicle(vin)) {
             System.out.println("Vehicle removed successfully!"); // Success message
         } else {
-            System.out.println("Vehicle with VIN " + vin + " not found."); // Error message
+            System.out.println("Vehicle with VIN " + vin + " not found..."); // Error message
         }
     }
 
     // Method to record a vehicle sale
     public void processSaleVehicleRequest() {
-        System.out.print("Enter date of contract (e.g., YYYY-MM-DD): ");
+        System.out.print("Enter date of contract (MM-DD-YYYY): ");
         String dateOfContract = scanley.nextLine();
 
         System.out.print("Enter customer name: ");
@@ -218,9 +218,8 @@ public class UserInterface {
                 break;
             }
         }
-
         if (vehicleSold == null) {
-            System.out.println("Vehicle not found."); // Error message if vehicle not found
+            System.out.println("Vehicle not found..."); // Error message if vehicle not found
             return;
         }
 
@@ -231,13 +230,14 @@ public class UserInterface {
         String financeInput = scanley.nextLine();
         boolean finance = financeInput.equalsIgnoreCase("yes");
 
+        // Create a SalesContract
         SalesContract salesContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, originalPrice, finance);
-        System.out.println("Sale contract created successfully!"); // Success message
+        System.out.println("Sale contract created successfully!");
     }
 
     // Method to record a vehicle lease
     public void processLeaseVehicleRequest() {
-        System.out.print("Enter date of contract (e.g., YYYY-MM-DD): ");
+        System.out.print("Enter date of contract (MM-DD-YYYY): ");
         String dateOfContract = scanley.nextLine();
 
         System.out.print("Enter customer name: ");
@@ -270,8 +270,8 @@ public class UserInterface {
         String financeInput = scanley.nextLine();
         boolean finance = financeInput.equalsIgnoreCase("yes");
 
-        // Ensure correct parameters are passed to the LeaseContract constructor
+        // Create a LeaseContract
         LeaseContract leaseContract = new LeaseContract(dateOfContract, customerName, customerEmail, vehicleLeased, originalPrice, finance);
-        System.out.println("Lease contract created successfully!"); // Success message
+        System.out.println("Lease contract created successfully!");
     }
 }

@@ -1,33 +1,29 @@
 package com.pluralsight.dealership;
 
 public class LeaseContract extends Contract {
-    private double expectedEndingValue; // 50% of the original price
-    private double leaseFee; // 7% of the original price
-    private boolean financed; // Indicates if the lease is financed
+    final private double originalPrice;
+    final private boolean financed;
 
+    // Constructor
     public LeaseContract(String dateOfContract, String customerName, String customerEmail, Vehicle vehicle, double originalPrice, boolean financed) {
-        super(dateOfContract, customerName, customerEmail, vehicle); // Call the constructor of the parent class
-        this.expectedEndingValue = originalPrice * 0.5; // Calculate expected ending value
-        this.leaseFee = originalPrice * 0.07; // Calculate lease fee
-        // Additional calculations can be performed based on your requirements
-    }
-
-    public boolean isFinanced() {
-        return financed; // Getter for financed status
+        super(dateOfContract, customerName, customerEmail, vehicle); // Call to Contract constructor
+        this.originalPrice = originalPrice;
+        this.financed = financed;
     }
 
     @Override
     public double getTotalPrice() {
-        return expectedEndingValue + leaseFee; // Total price for the lease contract
+        double expectedEndingValue = originalPrice * 0.50; // Expected ending value (50% of original price)
+        double leaseFee = originalPrice * 0.07; // Lease fee (7% of original price)
+        return originalPrice + leaseFee + expectedEndingValue; // Total price
     }
 
     @Override
     public double getMonthlyPayment() {
-        double monthlyPayment = 0.0; // Default value if no financing
-        if (isFinanced()) { // Check if financed
-            // Calculate monthly payment based on lease conditions
-            monthlyPayment = (getTotalPrice() / 36); // Simple monthly payment calculation for a 36-month lease
-        }
-        return monthlyPayment;
+        if (!financed) return 0; // No payment if not financed
+        double totalPrice = getTotalPrice();
+        double interestRate = 0.04; // Fixed interest rate for leases
+        int months = 36; // Lease duration
+        return (totalPrice * interestRate / 12) / (1 - Math.pow(1 + interestRate / 12, -months));
     }
 }
