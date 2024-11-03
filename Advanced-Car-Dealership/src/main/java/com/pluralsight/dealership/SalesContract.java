@@ -11,6 +11,11 @@ public class SalesContract extends Contract {
         this.financed = financed;
     }
 
+    public boolean isFinanced() {
+        return financed;
+    }
+
+
     @Override
     public double getTotalPrice() {
         double salesTax = originalPrice * 0.05; // Sales tax (5%)

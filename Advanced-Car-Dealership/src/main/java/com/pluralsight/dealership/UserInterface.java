@@ -233,7 +233,13 @@ public class UserInterface {
         // Create a SalesContract
         SalesContract salesContract = new SalesContract(dateOfContract, customerName, customerEmail, vehicleSold, originalPrice, finance);
         System.out.println("Sale contract created successfully!");
+
+        // Save the contract to the CSV file
+        ContractFileManager contractFileManager = new ContractFileManager();
+        contractFileManager.saveContract(salesContract);
     }
+
+
 
     // Method to record a vehicle lease
     public void processLeaseVehicleRequest() {
@@ -257,7 +263,6 @@ public class UserInterface {
                 break;
             }
         }
-
         if (vehicleLeased == null) {
             System.out.println("Vehicle not found."); // Error message if vehicle not found
             return;
@@ -273,5 +278,9 @@ public class UserInterface {
         // Create a LeaseContract
         LeaseContract leaseContract = new LeaseContract(dateOfContract, customerName, customerEmail, vehicleLeased, originalPrice, finance);
         System.out.println("Lease contract created successfully!");
+
+        // Save the contract to the CSV file
+        ContractFileManager contractFileManager = new ContractFileManager();
+        contractFileManager.saveContract(leaseContract);
     }
 }

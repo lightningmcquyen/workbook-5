@@ -18,6 +18,11 @@ public class LeaseContract extends Contract {
         return originalPrice + leaseFee + expectedEndingValue; // Total price
     }
 
+    public boolean isFinanced() {
+        return financed;
+    }
+
+
     @Override
     public double getMonthlyPayment() {
         if (!financed) return 0; // No payment if not financed
