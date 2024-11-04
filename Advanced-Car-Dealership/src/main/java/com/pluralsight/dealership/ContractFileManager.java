@@ -15,7 +15,6 @@ public class ContractFileManager {
             SalesContract salesContract = (SalesContract) contract;
             Vehicle vehicle = salesContract.getVehicleSold();
 
-            // Assuming you have methods to get the required fields
             double totalPrice = salesContract.getTotalPrice();
             double salesTax = totalPrice * 0.05; // Assuming 5% sales tax
             double recordingFee = 100.00;
@@ -43,7 +42,6 @@ public class ContractFileManager {
             LeaseContract leaseContract = (LeaseContract) contract;
             Vehicle vehicle = leaseContract.getVehicleSold();
 
-            // Assuming you have methods to get the required fields
             double totalPrice = leaseContract.getTotalPrice();
             double expectedEndingValue = totalPrice * 0.50; // expected ending value logic
 
